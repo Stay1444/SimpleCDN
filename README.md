@@ -4,14 +4,12 @@ A very basic "CDN" that i created to easily upload pictures or other files from 
 
 ## Features
 
-[x] File Compression
-
-[x] API for uploading files
-
-[X] C# Wrapper for the API
-[x] File Statistics
+- [x] File Compression
+- [x] API for uploading files
+- [x] C# Wrapper for the API
+- [x] File Statistics
   - Download Count
   - Date and Time of the last download
   - Etc
-[x] Temporal Files
-[x] No need for external services (like a database)
+- [x] Temporal Files
+- [x] No need for external services (like a database)

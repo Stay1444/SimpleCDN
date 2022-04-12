@@ -5,7 +5,9 @@ A very basic "CDN" that i created to easily upload pictures or other files from 
 ## Features
 
 [x] File Compression
+
 [x] API for uploading files
+
 [X] C# Wrapper for the API
 [x] File Statistics
   - Download Count

@@ -41,7 +41,11 @@ The default configuration looks like this:
 | Key | Default Value           | Accepted           | Description                                                                           |
 | --- |-------------------------|--------------------|---------------------------------------------------------------------------------------|
 | `Host` | `http://localhost:1444` | URI or IP Endpoint | The host of the server.                                                               |
-| `EnableCompression` | `true` | `true` / `false`    | Enable file compression.                                                              |
-| `CompressionThresholdInMb` | `10` | `Number`        | The compression threshold in megabytes. Any file larger than this will be compressed. |
-| `DeleteExpiredFiles` | `true` | `true` / `false`    | Delete files that are older than the expiration date provided.                        |
-| `ApiKeys` | `[]` | `[]` / `[String]` | The API keys that are allowed to access the API (uploading files).                    |
+| `EnableCompression` | `true`                  | `true` / `false`   | Enable file compression.                                                              |
+| `CompressionThresholdInMb` | `10`                    | `Number`           | The compression threshold in megabytes. Any file larger than this will be compressed. |
+| `DeleteExpiredFiles` | `true`                  | `true` / `false`   | Delete files that are older than the expiration date provided.                        |
+| `ApiKeys` | `[RandomGuid]`          | `[]` / `[Guid]`    | The API keys that are allowed to access the API (uploading files).                    |
+
+#### API Keys
+The API Keys are simple guids. If you run the SimpleCDN with the argument `--new-guid` it will generate a new Guid that you can use as an API Key for you.
+You can also use any webpage that generates Guids.

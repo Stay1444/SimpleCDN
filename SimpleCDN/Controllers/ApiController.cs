@@ -1,4 +1,7 @@
+using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SimpleCDN.Models;
@@ -87,8 +90,6 @@ public class ApiController : Controller
             Console.WriteLine("Expire is in the past");
             return BadRequest("Expire must be in the future");
         }
-        
-        var id = Guid.NewGuid();
         
         var result = await _fileProvider.CreateAsync(model, data.Files[0].OpenReadStream());
 

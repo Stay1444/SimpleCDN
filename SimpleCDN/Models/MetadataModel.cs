@@ -1,3 +1,5 @@
+using System;
+
 namespace SimpleCDN.Models;
 
 public class MetadataModel

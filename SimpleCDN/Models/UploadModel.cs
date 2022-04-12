@@ -1,3 +1,5 @@
+global using System;
+
 namespace SimpleCDN.Models;
 
 public class UploadModel

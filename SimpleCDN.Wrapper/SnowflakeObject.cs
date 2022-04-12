@@ -1,3 +1,5 @@
+using System;
+
 namespace SimpleCDN.Wrapper;
 
 public class SnowflakeObject

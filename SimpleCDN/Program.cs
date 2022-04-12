@@ -1,9 +1,14 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.IO;
+using System.Text.Json;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.DependencyInjection;
 using SimpleCDN;
 using SimpleCDN.Models;
 using SimpleCDN.Services;
-
+using System.Linq;
 if (args.Contains("--new-guid"))
 {
     Console.WriteLine(Guid.NewGuid());

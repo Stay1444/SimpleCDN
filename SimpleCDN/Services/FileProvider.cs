@@ -1,6 +1,9 @@
+using System;
+using System.IO;
 using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.StaticFiles;
 using SimpleCDN.Models;
 

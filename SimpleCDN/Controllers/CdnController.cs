@@ -37,6 +37,31 @@ public class CdnController : Controller
         }
     }
     
+    [HttpGet("/{id}/{name}")]
+    public async Task<IActionResult> Get(Guid id, string name)
+    {
+        try
+        {
+            var metadata = await _fileProvider.GetMetadataAsync(id);
+            if (metadata.Name != name)
+            {
+                return NotFound();
+            }
+            metadata.LastDownload = DateTime.UtcNow;
+            metadata.DownloadCount++;
+            
+            await _fileProvider.UpdateMetadataAsync(id, metadata);
+            
+            var stream = await _fileProvider.GetAsync(id);
+            
+            return File(stream, metadata.MimeType, metadata.Name);
+        }
+        catch (FileNotFoundException)
+        {
+            return NotFound();
+        }
+    }
+    
     [HttpGet("/{id}/metadata")]
     public async Task<IActionResult> GetMetadata(Guid id)
     {

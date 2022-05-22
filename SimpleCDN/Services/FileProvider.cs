@@ -140,4 +140,21 @@ public class FileProvider
         File.Delete(Path.Combine(Constants.CdnFolder, id.ToString() + ".meta"));
         
     }
+    
+    public async Task<MetadataModel[]> GetAllMetadatasAsync()
+    {
+        var files = Directory.GetFiles(Constants.CdnFolder, "*.meta");
+        var result = new List<MetadataModel>();
+        foreach (var file in files)
+        {
+            var fileName = Path.GetFileNameWithoutExtension(file);
+
+            if (Exists(Guid.Parse(fileName)))
+            {
+                result.Add(await GetMetadataAsync(Guid.Parse(fileName)));
+            }
+        }
+        
+        return result.ToArray();
+    }
 }

@@ -1,14 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Text.Json;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using System.Text.Json;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.Extensions.DependencyInjection;
 using SimpleCDN;
 using SimpleCDN.Models;
 using SimpleCDN.Services;
-using System.Linq;
 if (args.Contains("--new-guid"))
 {
     Console.WriteLine(Guid.NewGuid());
@@ -44,6 +38,19 @@ webBuilder.WebHost.UseKestrel(x =>
 {
     x.Limits.MaxRequestBodySize = long.MaxValue;
 });
+
+// Periodically loop through all files and check for their due date. 
+// Check every 60 minutes.
+_ = Task.Run(async () =>
+{
+    while (true)
+    {
+        var _ = await fileProvider.GetAllMetadatasAsync();
+        await Task.Delay(TimeSpan.FromMinutes(60));        
+    }
+    // ReSharper disable once FunctionNeverReturns
+});
+
 webBuilder.Services.AddControllers();
 webBuilder.WebHost.UseUrls(config.Host);
 webBuilder.Services.AddSingleton(config);

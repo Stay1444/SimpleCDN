@@ -2,5 +2,5 @@ namespace SimpleCDN;
 
 public class Constants
 {
-    public const string CdnFolder = "cdn";
+    public static string CdnFolder = Environment.GetEnvironmentVariable("CDN_DATA_FOLDER") ?? "cdn";
 }

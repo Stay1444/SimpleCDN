@@ -17,7 +17,6 @@ if (!File.Exists("config.json"))
         WriteIndented = true
     }));
     Console.WriteLine("Config file created");
-    return;
 }
 
 var config = JsonSerializer.Deserialize<ConfigurationModel>(File.ReadAllText("config.json"));
